@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Log In — BRAINBUXX{% endblock %}
+
+{% block content %}
+
+<section class="auth-wrapper">
+
+    <div class="auth-card">
+
+        <div class="brand-icon large">B</div>
+
+        <h1>Welcome back</h1>
+
+        <p class="muted">
+            Continue your journey of discovery.
+        </p>
+
+        <form method="POST" class="auth-form">
+
+            <label for="identity">Username or email</label>
+
+            <input
+                id="identity"
+                name="identity"
+                type="text"
+                autocomplete="username"
+                required
+            >
+
+            <label for="password">Password</label>
+
+            <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button class="button primary full-width" type="submit">
+                Log In
+            </button>
+
+        </form>
+
+        <p class="auth-switch">
+            New to Brainbuxx?
+            <a href="{{ url_for('signup') }}">Create an account</a>
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}
