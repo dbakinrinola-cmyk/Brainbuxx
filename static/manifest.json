@@ -1,0 +1,11 @@
+{
+  "name": "BRAINBUXX — VHS Innovation Edition",
+  "short_name": "BRAINBUXX",
+  "description": "Think, Explore, Invent — VHS Science & Innovation Club",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080d1c",
+  "theme_color": "#080d1c",
+  "orientation": "portrait",
+  "icons": []
+}
