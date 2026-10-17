@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+
+{% block title %}Brainbuxx AI — Learning Workspace{% endblock %}
+
+{% block content %}
+
+<div class="workspace">
+
+    <aside class="sidebar">
+
+        <button id="new-chat" class="button primary full-width">
+            + New Chat
+        </button>
+
+        <h3 class="sidebar-heading">YOUR CONVERSATIONS</h3>
+
+        <div id="conversation-list">
+
+            {% for conversation in conversations %}
+
+            <button
+                class="conversation-item"
+                data-id="{{ conversation.id }}"
+            >
+                {{ conversation.title[:32] }}
+            </button>
+
+            {% else %}
+
+            <p class="muted small">
+                Your conversations will appear here.
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="sidebar-bottom">
+            <span>Think · Explore · Invent</span>
+        </div>
+
+    </aside>
+
+    <section class="chat-area">
+
+        <div class="chat-heading">
+            <div>
+                <span class="online-dot"></span>
+                <strong>BRAINBUXX AI</strong>
+            </div>
+
+            <span class="muted small">
+                VHS Innovation Edition
+            </span>
+        </div>
+
+        <div id="welcome-screen" class="welcome-screen">
+
+            <div class="brand-icon large">B</div>
+
+            <h1>What will you discover today?</h1>
+
+            <p>
+                Ask a question. Explore an idea.
+                Build something extraordinary.
+            </p>
+
+            <div class="suggestion-grid">
+
+                <button class="suggestion"
+                        data-prompt="Explain photosynthesis step by step.">
+                    🌱 Explain photosynthesis
+                </button>
+
+                <button class="suggestion"
+                        data-prompt="Teach me the basics of Python programming.">
+                    💻 Learn Python
+                </button>
+
+                <button class="suggestion"
+                        data-prompt="Suggest a science project I can demonstrate at school.">
+                    🔬 Science project ideas
+                </button>
+
+                <button class="suggestion"
+                        data-prompt="Explain artificial intelligence in simple terms.">
+                    🤖 Understand AI
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="messages" class="messages" aria-live="polite"></div>
+
+        <div id="attachment-preview" class="attachment-preview"></div>
+
+        <div class="composer-wrapper">
+
+            <form id="chat-form">
+
+                <textarea
+                    id="message-input"
+                    placeholder="Ask Brainbuxx anything..."
+                    rows="1"
+                    maxlength="12000"
+                    required
+                ></textarea>
+
+                <div class="composer-toolbar">
+
+                    <div class="composer-tools">
+
+                        <label class="tool-button" title="Attach a file">
+                            📎
+                            <input
+                                type="file"
+                                id="file-input"
+                                accept=".txt,.pdf,.png,.jpg,.jpeg,.webp"
+                                hidden
+                            >
+                        </label>
+
+                        <button type="button"
+                                id="voice-button"
+                                class="tool-button"
+                                title="Voice input">
+                            🎙️
+                        </button>
+
+                        <button type="button"
+                                id="wiki-button"
+                                class="tool-button">
+                            🌍 Wikipedia
+                        </button>
+
+                        <button type="button"
+                                id="image-button"
+                                class="tool-button">
+                            🖼️ Images
+                        </button>
+
+                    </div>
+
+                    <button type="submit"
+                            id="send-button"
+                            class="send-button">
+                        ↑
+                    </button>
+
+                </div>
+
+            </form>
+
+            <p class="disclaimer">
+                AI can make mistakes. Verify important information.
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+
+<div id="search-modal" class="modal" hidden>
+
+    <div class="modal-card">
+
+        <div class="modal-heading">
+
+            <h2 id="modal-title">Explore</h2>
+
+            <button id="close-modal"
+                    class="tool-button"
+                    aria-label="Close">
+                ✕
+            </button>
+
+        </div>
+
+        <form id="search-form">
+            <input
+                id="search-query"
+                type="search"
+                placeholder="Search a topic..."
+                required
+            >
+
+            <button class="button primary" type="submit">
+                Search
+            </button>
+        </form>
+
+        <div id="search-results" class="search-results"></div>
+
+    </div>
+
+</div>
+
+{% endblock %}
